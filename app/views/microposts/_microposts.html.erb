@@ -15,7 +15,7 @@
         <div>
           <% if current_user == micropost.user %>
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger' %>
-            <%= render 'relationshipfavos/favo_button', user: @user %>
+            <%= render 'relationshipfavos/favo_button', user: @user , micropost: micropost %>
             <%= yield %>
           <% end %>
         </div>

@@ -29,9 +29,9 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
-  def favorite(other_user)
+  def favorite(micro)
     # unless self == other_user
-      self.relationshipfavos.find_or_create_by(favorite_id: other_user.id)
+      self.relationshipfavos.find_or_create_by(favorite_id: micro.id)
     # end
   end
 

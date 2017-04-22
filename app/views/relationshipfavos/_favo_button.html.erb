@@ -1,12 +1,12 @@
 <% # unless current_user == user %>
-  <% if current_user.favorite?(user) %>
-    <%= form_for(current_user.relationshipfavos.find_by(favorite_id: user.id), html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :favorite_id, user.id %>
+  <% if current_user.favorite?(micropost.id) %>
+    <%= form_for(current_user.relationshipfavos.find_by(favorite_id: micropost.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :favorite_id, micropost.id %>
       <%= f.submit 'Unfavorite', class: 'btn btn-danger' %>
     <% end %>
   <% else %>
     <%= form_for(current_user.relationshipfavos.build) do |f| %>
-      <%= hidden_field_tag :favorite_id, user.id %>
+      <%= hidden_field_tag :favorite_id, micropost.id %>
       <%= f.submit 'Favorite', class: 'btn btn-primary' %>
     <% end %>
   <% end %>
