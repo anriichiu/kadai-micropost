@@ -35,13 +35,13 @@ class User < ApplicationRecord
     # end
   end
 
-  def unfavorite(other_user)
-    relationshipfavo = self.relationshipfavos.find_by(favorite_id: other_user.id)
+  def unfavorite(micro)
+    relationshipfavo = self.relationshipfavos.find_by(favorite_id: micro.id)
     relationshipfavo.destroy if relationshipfavo
   end
 
-  def favorite?(other_user)
-    self.favorites.include?(other_user)
+  def favorite?(micro)
+    self.favorites.include?(micro)
   end
 
   
