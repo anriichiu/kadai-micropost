@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20170420054146) do
   end
 
   add_foreign_key "microposts", "users"
+  add_foreign_key "relationshipfavos", "microposts", column: "favorite_id"
   add_foreign_key "relationshipfavos", "users"
-  add_foreign_key "relationshipfavos", "users", column: "favorite_id"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
 end

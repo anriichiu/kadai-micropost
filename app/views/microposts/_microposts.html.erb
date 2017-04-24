@@ -1,5 +1,5 @@
 <ul class="media-list">
-  <% microposts.each do |micropost| %>
+  <% @microposts.each do |micropost| %>
     <% user = micropost.user %>
     <li class="media">
       <div class="media-left">
@@ -15,7 +15,7 @@
         <div>
           <% # if current_user == micropost.user %>
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger' %>
-            <%= render 'relationshipfavos/favo_button', user: @user , micropost: micropost %>
+            <%= render 'relationshipfavos/favo_button', user: @user , micropost: micropost, favorites: @favorites %>
             <%= yield %>
           <% # end %>
         </div>

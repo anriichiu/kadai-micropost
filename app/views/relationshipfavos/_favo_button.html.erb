@@ -1,5 +1,5 @@
 <% # unless current_user == user %>
-  <% if current_user.favorite?(micropost.id) %>
+  <% if current_user.favorite?(micropost) %>
     <%= form_for(current_user.relationshipfavos.find_by(favorite_id: micropost.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :favorite_id, micropost.id %>
       <%= f.submit 'Unfavorite', class: 'btn btn-danger' %>

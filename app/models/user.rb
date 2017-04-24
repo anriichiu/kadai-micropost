@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_of_relationship, source: :user
+  # has_many :favorites, :through => :relationshipfavos, :source => <name>'
 
   def follow(other_user)
     unless self == other_user
@@ -31,13 +32,17 @@ class User < ApplicationRecord
   
   def favorite(micro)
     # unless self == other_user
-      self.relationshipfavos.find_or_create_by(favorite_id: micro.id)
+      # self.relationshipfavos.find_or_create_by(favorite_id: micro.id)
     # end
+    
+    p micro
+    favo = Relationshipfavo.create!(user_id: self.id, favorite_id: micro.id)
   end
+    
 
   def unfavorite(micro)
     relationshipfavo = self.relationshipfavos.find_by(favorite_id: micro.id)
-    relationshipfavo.destroy if relationshipfavo
+    relationshipfavo.destroy if relationship_favo
   end
 
   def favorite?(micro)
