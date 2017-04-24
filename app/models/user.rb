@@ -42,7 +42,7 @@ class User < ApplicationRecord
 
   def unfavorite(micro)
     relationshipfavo = self.relationshipfavos.find_by(favorite_id: micro.id)
-    relationshipfavo.destroy if relationship_favo
+    relationshipfavo.destroy if relationshipfavo
   end
 
   def favorite?(micro)
